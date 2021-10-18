@@ -10,22 +10,25 @@
   <a href="/logout">ログアウト</a>
   <h1>Lec02 GET!</h1>
   <p>
-  <div th:if="${user}">
-    Hi [[${user}]]
-  </div>
-  <div>
+  <div th:if="${entry}">
+    エントリー
+    <ul>
+      <!--eachは所謂for each．この場合roomオブジェクトのusersフィールドにあるすべてのデータを一通り表示する
+        thが指定されているので[]が不要になる-->
+      <li th:each="user : ${entry.users}">[[${user}]]</li>
+    </ul>
     <a href="/lec02/g">ぐー</a>
     <a href="/lec02/t">ちょき</a>
     <a href="/lec02/p">ぱー</a>
-    <div th:if="${player}">
-      あなたの手 [[${player}]]
-    </div>
-    <div th:if="${cpu}">
-      相手の手 [[${cpu}]]
-    </div>
-    <div th:if="${judge}">
-      結果 [[${judge}]]
-    </div>
+  </div>
+  <div th:if="${player}">
+    あなたの手 [[${player}]]
+  </div>
+  <div th:if="${cpu}">
+    相手の手 [[${cpu}]]
+  </div>
+  <div th:if="${judge}">
+    結果 [[${judge}]]
   </div>
   </p>
 </body>
