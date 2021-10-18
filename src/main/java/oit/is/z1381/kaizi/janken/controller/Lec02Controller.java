@@ -12,13 +12,12 @@ public class Lec02Controller {
 
   /**
    *
-   *
-   *
    * @param user
    * @param param1
    * @param model
    * @return
    */
+
   @GetMapping("/lec02")
   public String lec02() {
     return "lec02.html";
