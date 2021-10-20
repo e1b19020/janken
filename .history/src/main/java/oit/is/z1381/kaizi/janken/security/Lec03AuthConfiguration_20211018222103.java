@@ -25,8 +25,8 @@ public class Lec03AuthConfiguration extends WebSecurityConfigurerAdapter {
 
     // $ sshrun htpasswd -nbBC 10 admin adm1n
     // htpasswdでBCryptエンコードを行った後の文字列をパスワードとして指定している．
-    auth.inMemoryAuthentication().withUser("admin2").password("$2y$10$Cg29nVSa9klNI9jU.UqRg.Nhkw99sqYDmZMPrZH6ImWIr8o1ICwsW").roles("ADMIN");
-    auth.inMemoryAuthentication().withUser("ほんだ").password(passwordEncoder().encode("honda")).roles("USER");
+    auth.inMemoryAuthentication().withUser("admin2")
+        .password("$2y$10$Cg29nVSa9klNI9jU.UqRg.Nhkw99sqYDmZMPrZH6ImWIr8o1ICwsW").roles("ADMIN");
   }
 
   @Bean
