@@ -1,22 +1,23 @@
 package oit.is.z1381.kaizi.janken.controller;
 
-import java.util.ArrayList;
+import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import oit.is.z1381.kaizi.janken.model.UserMapper;
-import oit.is.z1381.kaizi.janken.model.User;
+import oit.is.z1381.kaizi.janken.model.Entry;
 
 @Controller
 public class Lec02Controller {
 
   @Autowired
-  UserMapper uMapper;
+  ChamberMapper chamberMapper;
+
 
   /**
    *
@@ -25,6 +26,20 @@ public class Lec02Controller {
    * @param model
    * @return
    */
+
+  @GetMapping("/lec02")
+  public String sample38(Principal prin, ModelMap model) {
+    String loginUser = prin.getName();
+    this.room.addUser(loginUser);
+    model.addAttribute("entry", this.room);
+    return "lec02.html";
+  }
+
+  @PostMapping("/lec02")
+  public String lec02(@RequestParam String user, ModelMap model) {
+    model.addAttribute("user", user);
+    return "lec02.html";
+  }
 
   @GetMapping("/lec02/{param1}")
   public String lec021(@PathVariable String param1, ModelMap model) {
@@ -55,10 +70,10 @@ public class Lec02Controller {
   }
 
   @GetMapping("/lec02")
-  @Transactional
-  public String lec022(ModelMap model) {
-    ArrayList<User> users1 = uMapper.selectAllUser();
-    model.addAttribute("users1", users1);
+  public String lec022(@PathVariable Integer id, ModelMap model) {
+    ArrayList<ChamberUser> user1 = userMapper.selectAllUser();
+    model.addAttribute("user1", user1);
+
     return "lec02.html";
   }
 }

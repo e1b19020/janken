@@ -13,6 +13,7 @@
     エントリー
   <div th:each="user:${users1}">
     <tr>
+      <td>ID:[[${user.id}]]</td>
       <td>ユーザ名:[[${user.name}]]</td>
     </tr>
   </div>

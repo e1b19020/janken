@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.springframework.org/schema/security">
+<html>
 
 <head>
   <meta charset="utf-8">
@@ -13,6 +13,7 @@
     エントリー
   <div th:each="user:${users1}">
     <tr>
+      <td>ID:[[${user.id}]]</td>
       <td>ユーザ名:[[${user.name}]]</td>
     </tr>
   </div>

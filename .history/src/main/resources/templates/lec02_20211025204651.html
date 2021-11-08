@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.springframework.org/schema/security">
+<html>
 
 <head>
   <meta charset="utf-8">
@@ -10,19 +10,20 @@
   <a href="/logout">ログアウト</a>
   <h1>Lec02 GET!</h1>
   <p>
+  <div th:if="${users1}">
     エントリー
-  <div th:each="user:${users1}">
-    <tr>
-      <td>ユーザ名:[[${user.name}]]</td>
-    </tr>
-  </div>
-  </p>
-  <p>
-    <!--eachは所謂for each．この場合roomオブジェクトのusersフィールドにあるすべてのデータを一通り表示する
+      <!--eachは所謂for each．この場合roomオブジェクトのusersフィールドにあるすべてのデータを一通り表示する
         thが指定されているので[]が不要になる-->
+      <div th:each="users : ${users1}">
+        <tr>
+          <td>ID:[[${users.id}]]</td>
+          <td>ユーザ名:[[${users.name}]]</td>
+        </tr>
+      </div>
     <a href="/lec02/g">ぐー</a>
     <a href="/lec02/t">ちょき</a>
     <a href="/lec02/p">ぱー</a>
+  </div>
   <div th:if="${player}">
     あなたの手 [[${player}]]
   </div>
